@@ -1,26 +1,38 @@
-﻿// using Geometry;
+﻿using Geometry;
 
-// public class Circle
-// {
-//     //Code here
-//
-//     public Circle(double radius, Point center)
-//     {
-//         //Code here
-//     }
-//
-//     public Circle(double radius)
-//     {
-//         //Code here
-//     }
-//
-//     public double Area
-//     {
-//         //Code here
-//     }
-//
-//     public /* Code here */ BelongsToCircle(Point point)
-//     {
-//         //Code here
-//     }
-// }
+public class Circle
+{
+    public Point _center;
+    public double _radius;
+
+
+    public Point Center => _center;
+    public double Radius => _radius;
+
+    public Circle(double radius, Point center)
+    {
+        _radius = radius;
+        _center = center;
+    }
+
+    public Circle(double radius)
+    {
+        _radius = radius;
+    }
+
+    public double Area
+    {
+        get
+        {
+            return Math.PI * Radius * Radius;
+        }
+    }
+
+    public bool? BelongsToCircle(Point point)
+    {
+        if (Center == null)
+            return null;
+
+        return (point.X <= Center.X + Radius && point.Y <= Center.Y + Radius) ? true : false;
+    }
+}
